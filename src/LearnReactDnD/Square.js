@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { moveKnight } from './Game';
 
-export default class Square extends Component {
+class Square extends Component {
+    static propTypes = {
+        black: PropTypes.bool
+    }
+
     render() {
-        const { black } = this.props;
-        const fill = black ? 'black' : 'white';
-        const stroke = black ? 'white' : 'black';
+        const { black } = this.props
+        const fill = black ? 'black' : 'white'
+        const stroke = black ? 'white' : 'black'
 
         return (
             <div style={{
@@ -16,10 +21,8 @@ export default class Square extends Component {
             }}>
                 {this.props.children}
             </div>
-        );
+        )
     }
 }
 
-Square.propTypes = {
-    black: PropTypes.bool
-};
+export default Square
