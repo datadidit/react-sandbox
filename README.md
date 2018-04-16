@@ -11,11 +11,11 @@ wrap up and make easier for you.
 even mentioned in article written by creator of DnD [here](https://medium.com/@dan_abramov/the-future-of-drag-and-drop-apis-249dfea7a15f)
 * [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd): Came out a little bit later thann React Sortable Hoc. Is what
 atlassian tools are using for their products. 
-** Article on differences between `React Sortable Hoc` and `React Beautiful DnD` [here](https://medium.com/@alexandereardon/thanks-for-reaching-out-dimitar-nestorov-8c0bf9abe19)
-** `React Beautiful DnD` Into [article](https://medium.com/@alexandereardon/rethinking-drag-and-drop-d9f5770b4e6b)
-**  [Performance Article](https://medium.com/@alexandereardon/rethinking-drag-and-drop-d9f5770b4e6b)
-** Example to Shoot For [here](https://amp.reddit.com/r/reactjs/comments/88hn8w/react_kanban_a_trellolike_app_built_with_react/)
-** [More Discussion](https://www.reddit.com/r/javascript/comments/6tymdy/rethinking_drag_and_drop/)
+    * Article on differences between `React Sortable Hoc` and `React Beautiful DnD` [here](https://medium.com/@alexandereardon/thanks-for-reaching-out-dimitar-nestorov-8c0bf9abe19)
+    * `React Beautiful DnD` Into [article](https://medium.com/@alexandereardon/rethinking-drag-and-drop-d9f5770b4e6b)
+    *  [Performance Article](https://medium.com/@alexandereardon/rethinking-drag-and-drop-d9f5770b4e6b)
+    * Example to Shoot For [here](https://amp.reddit.com/r/reactjs/comments/88hn8w/react_kanban_a_trellolike_app_built_with_react/)
+    * [More Discussion](https://www.reddit.com/r/javascript/comments/6tymdy/rethinking_drag_and_drop/)
 
 
 
