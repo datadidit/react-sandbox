@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
 import GridDroppable from './DroppableGrid'
 import Grid from 'material-ui/Grid'
+import {withStyles} from 'material-ui/styles'
+import PropTypes from 'prop-types'
 
 const people = [
     {
@@ -11,8 +13,23 @@ const people = [
     {
         name: "Joy",
         id: 2
+    },
+    {
+        name: 'Malcolm',
+        id: 3
+    },
+    {
+        name: 'Hope',
+        id: 4
     }
 ]
+
+const style = theme => ({
+    grid: {
+        minHeight: '500px',
+        backgroundColor: 'lightgrey'
+    }
+})
 
 const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -26,7 +43,7 @@ class MUISimpleVerticalList extends Component {
     constructor(props){
         super(props)
         this.state = {
-            items: people
+            items: this.props.people || people
         }
 
         this.onDragEnd = this.onDragEnd.bind(this)
@@ -34,35 +51,31 @@ class MUISimpleVerticalList extends Component {
 
     onDragEnd(result){
         // dropped outside the list
-        if (!result.destination) {
-            return;
-        }
-
-        const items = reorder(
-            this.state.items,
-            result.source.index,
-            result.destination.index
-        );
-
-        console.log("Items")
-        console.log(items)
-
-        this.setState({
-            items
-        });
+        this.props.reorder(result.source.index, result.destination.index)
     }
 
     render(){
+        const { classes, people } = this.props
+
         return (
             <DragDropContext
                 onDragEnd={this.onDragEnd}
             >
                 <Grid container>
-                    <GridDroppable draggables={this.state.items}/>
+                    <Grid item
+                          xs={4}
+                          className={classes.grid}>
+                        <GridDroppable draggables={people}/>
+                    </Grid>
                 </Grid>
             </DragDropContext>
         )
     }
 }
 
-export default MUISimpleVerticalList
+MUISimpleVerticalList.propTypes = {
+    people: PropTypes.array.isRequired,
+    reorder: PropTypes.func
+}
+
+export default withStyles(style)(MUISimpleVerticalList)

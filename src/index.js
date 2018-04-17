@@ -4,8 +4,12 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {observe} from './read-dnd/Game'
 import Board from './read-dnd/Board'
+import rootReducer from './redux/reducer'
+import { createStore } from 'redux'
+import {Provider} from 'react-redux';
 import {Switch, Route, BrowserRouter, Link} from 'react-router-dom';
-import { SimpleVerticalList, MUISimpleVerticalList } from './react-beautiful-dnd'
+import { SimpleVerticalList } from './react-beautiful-dnd'
+import MUISimpleVerticalList from './container/MUISimpleVerticalListContainer'
 
 // Tutorial Code
 const rootEl = document.getElementById('root');
@@ -16,6 +20,8 @@ const rootEl = document.getElementById('root');
         rootEl
     )
 );*/
+
+const store = createStore(rootReducer)
 
 class Index extends Component {
     render() {
@@ -32,12 +38,14 @@ class Index extends Component {
 }
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/simpleverticallist" component={SimpleVerticalList}/>
-            <Route exact path="/muisimpleverticallist" component={MUISimpleVerticalList} />
-            <Route exact path="/" component={Index}/>
-        </Switch>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/simpleverticallist" component={SimpleVerticalList}/>
+                <Route exact path="/muisimpleverticallist" component={MUISimpleVerticalList}/>
+                <Route exact path="/" component={Index}/>
+            </Switch>
+        </BrowserRouter>
+    </Provider>
     , rootEl
 )

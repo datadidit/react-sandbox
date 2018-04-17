@@ -5,19 +5,12 @@ import DraggableCard from './DraggableCard'
 import { withStyles } from 'material-ui/styles'
 import PropTypes from 'prop-types'
 
-const style = theme => ({
-    grid: {
-        minHeight: '500px',
-        backgroundColor: 'lightgrey'
-    }
-})
-
 const grid = 8
 
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
-    padding: grid,
-    width: 250
+    width: "100%",
+    height: "100%"
 });
 
 class GridDroppable extends Component {
@@ -38,7 +31,6 @@ class GridDroppable extends Component {
     }
 
     render() {
-        const { classes } = this.props
         const { draggables } = this.state
         let draggableCards = []
         for(let [index, draggable] of draggables.entries()) {
@@ -64,5 +56,5 @@ GridDroppable.propTypes = {
     draggables: PropTypes.array.isRequired
 }
 
-export default withStyles(style)(GridDroppable)
+export default GridDroppable
 
