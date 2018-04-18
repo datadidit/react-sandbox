@@ -32,7 +32,7 @@ class MultipleListExample extends Component {
         if (!result.destination) {
             return;
         }
-        
+
         this.props.multipleOrder(result)
     }
 
@@ -70,6 +70,7 @@ class MultipleListExample extends Component {
 }
 
 MultipleListExample.propTypes = {
+    places: PropTypes.object.isRequired,
     multipleOrder: PropTypes.func.isRequired
 }
 
