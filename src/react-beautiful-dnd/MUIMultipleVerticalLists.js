@@ -28,7 +28,11 @@ class MultipleListExample extends Component {
     }
 
     onDragEndMultiple = result => {
-        console.log(result)
+        // dropped outside the list
+        if (!result.destination) {
+            return;
+        }
+        
         this.props.multipleOrder(result)
     }
 
@@ -41,6 +45,7 @@ class MultipleListExample extends Component {
                       className={classes.gridItem}
                       xs={4}>
                     <Paper className={classes.paper}>
+                        <h1>{key}</h1>
                         <GridDroppable
                             droppableId={key}
                             draggables={val}/>
