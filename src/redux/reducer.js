@@ -1,4 +1,4 @@
-import { ORDER_LIST } from "./constants";
+import {MULTI_ORDERED_LISTS, ORDER_LIST} from "./constants";
 let cloneDeep = require('lodash/cloneDeep');
 
 const initial_state = {
@@ -38,19 +38,19 @@ const initial_state = {
     ],
     places: {
         notvisited: [
-            {
-                name: 'New Orleans',
-                id: 1
-            },
-            {
-                name: 'Hawaii',
-                id: 2
-            },
-            {
-                name: 'Greece',
-                id: 3
-            }
-        ],
+                {
+                    name: 'New Orleans',
+                    id: 1
+                },
+                {
+                    name: 'Hawaii',
+                    id: 2
+                },
+                {
+                    name: 'Greece',
+                    id: 3
+                }
+            ],
         visited: []
     }
 }
@@ -69,10 +69,28 @@ export const reorder = (state, startIndex, endIndex) => {
     })
 }
 
+export const multi_reorder = (state, result) => {
+    // Clone lists
+    let visited = cloneDeep(state.places.visited)
+    let notvisited = cloneDeep(state.places.notvisited)
+
+    // Get source and destination
+    let sourceDroppableId = result.source.droppableId
+    let destinationDroppabeId = result.destination.droppableId
+
+    // If droppable Ids are different
+
+    if(sourceDroppableId !== destinationDroppabeId){
+
+    }
+}
+
 const reducer = (state = initial_state, action) => {
     switch(action.type){
         case ORDER_LIST:
             return reorder(state, action.startIndex, action.endIndex)
+        case MULTI_ORDERED_LISTS:
+            return multi_reorder(state, action.result)
         default:
             return state
     }

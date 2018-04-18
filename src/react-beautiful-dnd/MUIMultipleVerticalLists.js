@@ -32,11 +32,22 @@ class MultipleListExample extends Component {
     }
 
     render(){
-        const { classes, visited, notvisited } = this.props
+        const { classes, visited, notvisited, places } = this.props
+        let columns = []
+        for(const [key, val] of Object.entries(places)){
+            columns.push(
+                <Grid item
+                      className={classes.gridItem}
+                      xs={4}>
+                    <Paper className={classes.paper}>
+                        <GridDroppable
+                            droppableId={key}
+                            draggables={val}/>
+                    </Paper>
+                </Grid>
+            )
+        }
 
-        console.log("Visited ")
-        console.log(visited)
-        console.log(this.props)
         return (
             <DragDropContext
                 onDragEnd={this.onDragEndMultiple}
@@ -45,24 +56,7 @@ class MultipleListExample extends Component {
                     spacing={16}
                     className={classes.grid}
                     container>
-                    <Grid item
-                          className={classes.gridItem}
-                          xs={4}>
-                        <Paper className={classes.paper}>
-                            <GridDroppable
-                                droppableId={"notvisited"}
-                                draggables={notvisited}/>
-                        </Paper>
-                    </Grid>
-                    <Grid item
-                          className={classes.gridItem}
-                          xs={4}>
-                        <Paper className={classes.paper}>
-                            <GridDroppable
-                                droppableId={"visited"}
-                                draggables={visited}/>
-                        </Paper>
-                    </Grid>
+                    {columns}
                 </Grid>
             </DragDropContext>
         )
@@ -71,7 +65,7 @@ class MultipleListExample extends Component {
 
 MultipleListExample.propTypes = {
     visited: PropTypes.array.isRequired,
-    notvisited: PropTypes.array.isRequired
+    notvisited: PropTypes.string.isRequired,
 }
 
 export default withStyles(style)(MultipleListExample)

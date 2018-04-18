@@ -4,7 +4,8 @@ import MUIMultipleVerticalList from '../react-beautiful-dnd/MUIMultipleVerticalL
 
 const mapStateToProps = (state) => ({
     visited: state.places.visited,
-    notvisited: state.places.notvisited
+    notvisited: state.places.notvisited,
+    places: state.places
 })
 
 const mapDispatchToProps = (dispatch) => ({
