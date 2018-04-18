@@ -9,6 +9,7 @@ import {Switch, Route, BrowserRouter, Link} from 'react-router-dom';
 import store from './redux/configureStore'
 import { SimpleVerticalList } from './react-beautiful-dnd'
 import MUISimpleVerticalList from './container/MUISimpleVerticalListContainer'
+import MUIMultipleVerticalLists from './container/MUIMultipleListContainer'
 
 // Tutorial Code
 const rootEl = document.getElementById('root');
@@ -28,6 +29,7 @@ class Index extends Component {
                 <ul>
                     <li><Link to="/simpleverticallist">Simple Vertical List Example</Link></li>
                     <li><Link to="/muisimpleverticallist">MUI Simple Vertical List</Link></li>
+                    <li><Link to="/multilistexample">Multiple Lists</Link></li>
                 </ul>
             </div>
         )
@@ -40,6 +42,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/simpleverticallist" component={SimpleVerticalList}/>
                 <Route exact path="/muisimpleverticallist" component={MUISimpleVerticalList}/>
+                <Route exact path="/multilistexample" component={MUIMultipleVerticalLists}/>
                 <Route exact path="/" component={Index}/>
             </Switch>
         </BrowserRouter>

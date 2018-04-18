@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import Grid from 'material-ui/Grid'
 import { Droppable } from 'react-beautiful-dnd'
 import DraggableCard from './DraggableCard'
-import { withStyles } from 'material-ui/styles'
 import PropTypes from 'prop-types'
-
-const grid = 8
 
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
@@ -17,7 +13,8 @@ class GridDroppable extends Component {
     constructor(props){
         super(props)
         this.state = {
-            draggables: this.props.draggables || []
+            draggables: this.props.draggables || [],
+            droppableId: this.props.droppableId || "droppable-mui-grid"
         }
     }
 
@@ -26,19 +23,18 @@ class GridDroppable extends Component {
             this.setState({
                 draggables: nextProps.draggables
             })
-            console.log("Updated state")
         }
     }
 
     render() {
-        const { draggables } = this.state
+        const { draggables, droppableId } = this.state
         let draggableCards = []
         for(let [index, draggable] of draggables.entries()) {
             draggableCards.push(<DraggableCard name={draggable.name} id={draggable.id} index={index}/>)
         }
 
         return (
-            <Droppable droppableId="droppable-mui-grid">
+            <Droppable droppableId={droppableId}>
                 {(provided, snapshot) => (
                     <div ref={provided.innerRef}
                          style={getListStyle(snapshot.isDraggingOver)}
@@ -53,7 +49,8 @@ class GridDroppable extends Component {
 }
 
 GridDroppable.propTypes = {
-    draggables: PropTypes.array.isRequired
+    draggables: PropTypes.array.isRequired,
+    droppableId: PropTypes.string
 }
 
 export default GridDroppable

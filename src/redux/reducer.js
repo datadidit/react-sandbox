@@ -35,7 +35,24 @@ const initial_state = {
             name: 'Andrew',
             id: 8
         }
-    ]
+    ],
+    places: {
+        notvisited: [
+            {
+                name: 'New Orleans',
+                id: 1
+            },
+            {
+                name: 'Hawaii',
+                id: 2
+            },
+            {
+                name: 'Greece',
+                id: 3
+            }
+        ],
+        visited: []
+    }
 }
 
 export const reorder = (state, startIndex, endIndex) => {
