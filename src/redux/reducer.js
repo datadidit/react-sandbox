@@ -70,18 +70,34 @@ export const reorder = (state, startIndex, endIndex) => {
 }
 
 export const multi_reorder = (state, result) => {
-    // Clone lists
-    let visited = cloneDeep(state.places.visited)
-    let notvisited = cloneDeep(state.places.notvisited)
-
-    // Get source and destination
+    // Get droppable Ids
     let sourceDroppableId = result.source.droppableId
-    let destinationDroppabeId = result.destination.droppableId
+    let destinationDroppableId = result.destination.droppableId
 
-    // If droppable Ids are different
+    // Clone source and destination states
+    let newPlaces = cloneDeep(state.places)
+    let newDestination = newPlaces[destinationDroppableId]
+    let newSource = newPlaces[sourceDroppableId]
 
-    if(sourceDroppableId !== destinationDroppabeId){
+    // Remove item from it's source
+    const [removed] = newSource.splice(result.source.index, 1)
 
+    // Be aware of droppableId if there the same just add back to source
+    if(sourceDroppableId === destinationDroppableId){
+        newSource.splice(result.destination.index, 0, removed)
+        newPlaces[sourceDroppableId] = newSource
+        return ({
+            ...state,
+            places: newPlaces
+        })
+    }else{
+        newDestination.splice(result.destination.index, 0, removed)
+        newPlaces[destinationDroppableId] = newDestination
+        newPlaces[sourceDroppableId] = newSource
+        return ({
+            ...state,
+            places: newPlaces
+        })
     }
 }
 

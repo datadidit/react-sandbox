@@ -29,10 +29,11 @@ class MultipleListExample extends Component {
 
     onDragEndMultiple = result => {
         console.log(result)
+        this.props.multipleOrder(result)
     }
 
     render(){
-        const { classes, visited, notvisited, places } = this.props
+        const { classes, places } = this.props
         let columns = []
         for(const [key, val] of Object.entries(places)){
             columns.push(
@@ -64,8 +65,7 @@ class MultipleListExample extends Component {
 }
 
 MultipleListExample.propTypes = {
-    visited: PropTypes.array.isRequired,
-    notvisited: PropTypes.string.isRequired,
+    multipleOrder: PropTypes.func.isRequired
 }
 
 export default withStyles(style)(MultipleListExample)

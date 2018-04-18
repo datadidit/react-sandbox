@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MUIMultipleVerticalList from '../react-beautiful-dnd/MUIMultipleVerticalLists'
+import { multi_ordered_lists } from "../redux/actions";
 
 const mapStateToProps = (state) => ({
     visited: state.places.visited,
@@ -9,6 +10,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    multipleOrder: results => dispatch(multi_ordered_lists(results))
 })
 
-export default connect(mapStateToProps, null)(MUIMultipleVerticalList)
+export default connect(mapStateToProps, mapDispatchToProps)(MUIMultipleVerticalList)
