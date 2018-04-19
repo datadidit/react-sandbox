@@ -52,20 +52,40 @@ const initial_state = {
                 }
             ],
         visited: []
-    }
+    },
+    employees: [
+        {
+            name: "Tony",
+            salary: 60000,
+            age: 25,
+            rank: 1
+        },
+        {
+            name: 'Sasha',
+            salary: 65000,
+            age: 27,
+            rank: 2,
+        },
+        {
+            name: 'Frank',
+            salary: 70000,
+            age: 30,
+            rank: 3
+        }
+    ]
 }
 
-export const reorder = (state, startIndex, endIndex) => {
-    let newPeople = cloneDeep(state.people)
+export const reorder = (state, startIndex, endIndex, type="people") => {
+    let result = Array.from(state[type])
 
-    const [removed] = newPeople.splice(startIndex, 1)
-    newPeople.splice(endIndex, 0, removed)
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
 
     //console.log("Latest newPeople ")
     //console.log(newPeople)
     return ({
         ...state,
-        people: newPeople
+        people: result
     })
 }
 
@@ -104,7 +124,7 @@ export const multi_reorder = (state, result) => {
 const reducer = (state = initial_state, action) => {
     switch(action.type){
         case ORDER_LIST:
-            return reorder(state, action.startIndex, action.endIndex)
+            return reorder(state, action.startIndex, action.endIndex, action.listType)
         case MULTI_ORDERED_LISTS:
             return multi_reorder(state, action.result)
         default:

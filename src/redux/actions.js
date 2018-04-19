@@ -2,8 +2,9 @@ import {
     ORDER_LIST,
     MULTI_ORDERED_LISTS } from './constants'
 
-export const order_list = (startIndex, endIndex) => ({
+export const order_list = (startIndex, endIndex, type="people") => ({
     type: ORDER_LIST,
+    listType: type,
     startIndex: startIndex,
     endIndex: endIndex
 })

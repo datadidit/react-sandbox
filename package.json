@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devexpress/dx-react-core": "^1.1.2",
+    "@devexpress/dx-react-grid": "^1.1.2",
+    "@devexpress/dx-react-grid-material-ui": "^1.1.2",
+    "@material-ui/icons": "^1.0.0-beta.42",
     "ajv": "^6.4.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.42",
