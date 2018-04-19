@@ -85,7 +85,7 @@ export const reorder = (state, startIndex, endIndex, type="people") => {
     //console.log(newPeople)
     return ({
         ...state,
-        people: result
+        [type]: result
     })
 }
 
