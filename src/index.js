@@ -11,7 +11,10 @@ import { SimpleVerticalList } from './react-beautiful-dnd'
 import MUISimpleVerticalList from './container/MUISimpleVerticalListContainer'
 import MUIMultipleVerticalLists from './container/MUIMultipleListContainer'
 import DevExpressTableContainer from "./container/DevExpressTableContainer";
-import SimpleTableExampleContainer from "./container/SimpleTableExampleContainer";
+import {
+    SimpleTableContainer,
+    MUITableContainer
+} from "./container/SimpleTableExampleContainer";
 
 // Tutorial Code
 const rootEl = document.getElementById('root');
@@ -33,6 +36,7 @@ class Index extends Component {
                     <li><Link to="/muisimpleverticallist">MUI Simple Vertical List</Link></li>
                     <li><Link to="/multilistexample">Multiple Lists</Link></li>
                     <li><Link to="/simpletableexample">SimpleTableExample</Link></li>
+                    <li><Link to="/muitableexample">MUI Table Example</Link></li>
                     <li><Link to="/devexpresstable">Dev Express Draggable Rows</Link></li>
                 </ul>
             </div>
@@ -48,7 +52,8 @@ ReactDOM.render(
                 <Route exact path="/muisimpleverticallist" component={MUISimpleVerticalList}/>
                 <Route exact path="/multilistexample" component={MUIMultipleVerticalLists}/>
                 <Route exact path="/devexpresstable" component={DevExpressTableContainer} />
-                <Route exact path="/simpletableexample" component={SimpleTableExampleContainer} />
+                <Route exact path="/simpletableexample" component={SimpleTableContainer} />
+                <Route exact path="/muitableexample" component={MUITableContainer} />
                 <Route exact path="/" component={Index}/>
             </Switch>
         </BrowserRouter>

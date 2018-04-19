@@ -3,6 +3,10 @@ import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd'
 import PropTypes from 'prop-types'
 
 class TableRow extends Component {
+    constructor(props){
+        super(props)
+
+    }
     render() {
         const {name, age, index, salary} = this.props
         return (
@@ -48,9 +52,9 @@ class DraggableTableExample extends Component {
     }
 
     render() {
-        const { rows } = this.props
+        const {rows} = this.props
         let draggableRows = []
-        for(let [index, key] of rows.entries()){
+        for (let [index, key] of rows.entries()) {
             draggableRows.push(
                 <TableRow name={key.name} salary={key.salary} age={key.age} index={index}/>
             )
@@ -58,17 +62,23 @@ class DraggableTableExample extends Component {
 
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Salary</th>
-                        <th>Age</th>
-                    </tr>
+                <table style={{
+                    width: '100%'
+                }}>
+                    <thead>
+                        <tr style={{
+                            backgroundColor: 'green'
+                        }}>
+                            <th>Name</th>
+                            <th>Salary</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
                     <Droppable droppableId="tableExample">
                         {(provided, snapshot) => (
                             <tbody
                                 ref={provided.innerRef}>
-                                {draggableRows}
+                            {draggableRows}
                             </tbody>
                         )}
                     </Droppable>
