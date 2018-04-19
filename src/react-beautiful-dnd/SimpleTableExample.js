@@ -2,6 +2,15 @@ import React, {Component} from 'react'
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd'
 import PropTypes from 'prop-types'
 
+const getStyledTd = (content) => {
+    return (
+        <td style={{
+            boxSizing: 'border-box',
+            width: '50%'
+        }}>{ content }</td>
+    )
+}
+
 class TableRow extends Component {
     constructor(props){
         super(props)
@@ -9,6 +18,11 @@ class TableRow extends Component {
     }
     render() {
         const {name, age, index, salary} = this.props
+        let data = [
+            getStyledTd(name),
+            getStyledTd(salary),
+            getStyledTd(age)
+        ]
         return (
             <Draggable draggableId={name} index={index}>
                 {(provided, snapshot) => (
@@ -17,9 +31,7 @@ class TableRow extends Component {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                     >
-                        <td>{name}</td>
-                        <td>{salary}</td>
-                        <td>{age}</td>
+                        {data}
                     </tr>
                 )}
             </Draggable>
