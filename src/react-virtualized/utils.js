@@ -23,7 +23,7 @@ export const headers = [
     {
         title: 'Player',
         name: 'player',
-        getCellValue: row => getName
+        getCellValue: row => getName(row)
     },
     {
         title: 'AB',
@@ -51,8 +51,7 @@ export const getBattingStats = (columnIndex, headers, row) => {
     let columnSelector = headers[columnIndex]
     if('getCellValue' in columnSelector){
         const funct = columnSelector.getCellValue
-        //console.log(columnSelector.getCellValue(row))
-        return getName(row)
+        return funct(row)
     }else{
         return row[columnSelector['name']]
     }
