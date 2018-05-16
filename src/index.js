@@ -15,6 +15,8 @@ import {
     SimpleTableContainer,
     MUITableContainer
 } from "./container/SimpleTableExampleContainer";
+import MultiGridExample from './react-virtualized/MultiGridExample'
+import BasicGridExample from './react-virtualized/BasicGridExample'
 
 // Tutorial Code
 const rootEl = document.getElementById('root');
@@ -39,6 +41,11 @@ class Index extends Component {
                     <li><Link to="/muitableexample">MUI Table Example</Link></li>
                     <li><Link to="/devexpresstable">Dev Express Draggable Rows</Link></li>
                 </ul>
+                <h1>React Virtualized Examples</h1>
+                <ul>
+                    <li><Link to="/basicgridexample">Basic Grid Example</Link></li>
+                    <li><Link to="/multigridexample">Multi Grid Example</Link></li>
+                </ul>
             </div>
         )
     }
@@ -54,6 +61,8 @@ ReactDOM.render(
                 <Route exact path="/devexpresstable" component={DevExpressTableContainer} />
                 <Route exact path="/simpletableexample" component={SimpleTableContainer} />
                 <Route exact path="/muitableexample" component={MUITableContainer} />
+                <Route exact path="/multigridexample" component={MultiGridExample} />
+                <Route exact path="/basicgridexample" component={BasicGridExample} />
                 <Route exact path="/" component={Index}/>
             </Switch>
         </BrowserRouter>
